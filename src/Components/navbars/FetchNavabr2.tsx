@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "./assets/firebase/firebase";
+import { db } from "../../assets/firebase/firebase";
 
-const FetchComponent = () => {
-  // const [Component, setComponent] = useState<React.FC | null>(null);
+const FetchNavbar = () => {
   const [fetched, setFetched] = useState(false);
 
-
-  const [componentCode,setComponentCode ] = useState<string>('');
+  const [componentCode, setComponentCode] = useState<string>("");
   useEffect(() => {
     const fetchComponent = async () => {
       if (fetched) return;
 
       try {
-        const docRef = doc(db, "components", "buttonComponent");
+        const docRef = doc(db, "NavbarComponent", "Navbar2");
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
           let componentCode = docSnap.data().component;
-          console.log(componentCode);
+          console.log("Fetch Sucessfully");
 
           setComponentCode(() => componentCode);
 
-          
           setFetched(true);
         }
       } catch (error) {
@@ -36,13 +32,9 @@ const FetchComponent = () => {
   return (
     <div>
       <h2>Fetched Component</h2>
-      <div
-      dangerouslySetInnerHTML={{__html: componentCode}}>
-
-
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: componentCode }}></div>
     </div>
   );
 };
 
-export default FetchComponent;
+export default FetchNavbar;
