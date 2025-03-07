@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../assets/firebase/firebase";
+import { db } from "../assets/firebase/firebase";
 
-const FetchNavbar = () => {
+const Website = () => {
   const [fetched, setFetched] = useState(false);
 
   const [componentCode, setComponentCode] = useState<string>("");
+
   useEffect(() => {
     const fetchComponent = async () => {
       if (fetched) return;
 
       try {
-        const docRef = doc(db, "NavbarComponent", "Navbar2");
-        const docSnap = await getDoc(docRef);
+        const selectedDoc = doc(db, "SelectedNavbar", "current");
+        const docSnap = await getDoc(selectedDoc);
         if (docSnap.exists()) {
-          let componentCode = docSnap.data().component;
+          let componentCode = docSnap.data().navbar;
           console.log("Fetch Sucessfully");
 
-          setComponentCode(componentCode);
+          setComponentCode(() => componentCode);
 
           setFetched(true);
         }
       } catch (error) {
-        console.error("Error fetching component:", error);
+        console.error("Error fetching selected navbar:", error);
       }
     };
 
@@ -31,10 +32,10 @@ const FetchNavbar = () => {
 
   return (
     <div>
-      <h2>Fetched Component</h2>
+      <h2>Website Preview</h2>
       <div dangerouslySetInnerHTML={{ __html: componentCode }}></div>
     </div>
   );
 };
 
-export default FetchNavbar;
+export default Website;

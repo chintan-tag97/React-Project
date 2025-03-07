@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../assets/firebase/firebase";
 
-const FetchNavbar = () => {
+const FetchNavbar4 = () => {
   const [fetched, setFetched] = useState(false);
 
   const [componentCode, setComponentCode] = useState<string>("");
@@ -11,13 +11,13 @@ const FetchNavbar = () => {
       if (fetched) return;
 
       try {
-        const docRef = doc(db, "NavbarComponent", "Navbar2");
+        const docRef = doc(db, "NavbarComponent", "Navbar4");
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          let componentCode = docSnap.data().component;
+          let componentCode = docSnap.data().navbar4;
           console.log("Fetch Sucessfully");
 
-          setComponentCode(componentCode);
+          setComponentCode(() => componentCode);
 
           setFetched(true);
         }
@@ -37,4 +37,4 @@ const FetchNavbar = () => {
   );
 };
 
-export default FetchNavbar;
+export default FetchNavbar4;

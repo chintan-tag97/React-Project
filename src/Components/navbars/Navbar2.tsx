@@ -5,23 +5,27 @@ import { db } from "../../assets/firebase/firebase";
 const saveComponent = async () => {
   const navbarComponent = `
 
-    <nav class="w-64 bg-gray-800 text-white p-5 flex flex-col space-y-4">
-            <h2 class="text-lg font-bold">Dashboard</h2>
-            <a href="#" class="p-2 hover:bg-gray-700 rounded">Home</a>
-            <a href="#" class="p-2 hover:bg-gray-700 rounded">About</a>
-            <a href="#" class="p-2 hover:bg-gray-700 rounded">Services</a>
-            <a href="#" class="p-2 hover:bg-gray-700 rounded">Contact</a>
-            <a href="#" class="p-2 hover:bg-gray-700 rounded">Logout</a>
-        </nav>
+ <nav class="bg-yellow-300 p-4 font-serif italic text-white flex justify-between items-center">
+  <h1 class="text-xl font-bold">My Website</h1>
+  <ul class="hidden md:flex space-x-4">
+    <li><a href="#" class="hover:text-green-300">Home</a></li>
+    <li><a href="#" class="hover:text-green-300">About</a></li>
+    <li><a href="#" class="hover:text-green-300">Services</a></li>
+    <li><a href="#" class="hover:text-green-300">Contact</a></li>
+  </ul>
+  <button class="md:hidden block text-white focus:outline-none">
+    ☰
+  </button>
+</nav>
      
   `;
 
   try {
     await setDoc(doc(db, "NavbarComponent", "Navbar2"), {
-      component: navbarComponent,
+      navbar2: navbarComponent,
     });
 
-    console.log(" Navbar Component stored successfully!");
+    console.log(" Navbar2 Component stored successfully!");
   } catch (error) {
     console.error(" Error storing component:", error);
   }
@@ -32,7 +36,7 @@ function Navbar2() {
     saveComponent();
   }, []);
 
-  return <h1>Navbar2 Component Stored in Database</h1>;
-}
+  return <>
+  </>;}
 
 export default Navbar2;

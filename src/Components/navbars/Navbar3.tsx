@@ -3,9 +3,10 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../assets/firebase/firebase";
 
 const saveComponent = async () => {
-  const Navbar1 = `
+  const Navbar3 = `
 
-    <nav class="bg-blue-300 p-4 text-white flex justify-between items-center">
+   
+    <nav class="bg-red-300 italic p-4 text-white flex justify-between items-center">
   <h1 class="text-xl font-bold">My Website</h1>
   <ul class="hidden md:flex space-x-4">
     <li><a href="#" class="hover:text-gray-300">Home</a></li>
@@ -22,17 +23,17 @@ const saveComponent = async () => {
   `;
 
   try {
-    await setDoc(doc(db, "NavbarComponent", "Navbar1"), {
-      navbar1: Navbar1,
+    await setDoc(doc(db, "NavbarComponent", "Navbar3"), {
+      navbar3: Navbar3,
     });
 
-    console.log(" Navbar1 Component stored successfully!");
+    console.log(" Navbar3 Component stored successfully!");
   } catch (error) {
     console.error(" Error storing component:", error);
   }
 };
 
-function Navbar() {
+function Navbar3() {
   useEffect(() => {
     saveComponent();
   }, []);
@@ -40,4 +41,4 @@ function Navbar() {
   return <>
   </>;}
 
-export default Navbar;
+export default Navbar3;
