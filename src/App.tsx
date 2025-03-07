@@ -29,8 +29,8 @@ function App() {
       {/* <Navbar4 /> */}
       {/* <FetchNavbar4 /> */}
 
-      {/* <Rendering />
-      <Website/> */}
+      <Rendering />
+      <Website/>
 
       {/* <Button />
       <FetchButton /> */}
