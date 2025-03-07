@@ -6,11 +6,7 @@ const Rendering = () => {
   const [selectedNavbar, setSelectedNavbar] = useState("Navbar1");
   const [componentCode, setComponentCode] = useState("");
 
-
-
   useEffect(() => {
-
-    
     const fetchComponent = async () => {
       try {
         const docRef = doc(db, "NavbarComponent", selectedNavbar);
@@ -20,9 +16,16 @@ const Rendering = () => {
           const data = docSnap.data();
           console.log("Fetched Successfully");
 
-          const componentHTML = data.component || data.navbar1 || data.navbar2 || data.navbar3 || data.navbar4;
+          const componentHTML =
+            data.component ||
+            data.navbar1 ||
+            data.navbar2 ||
+            data.navbar3 ||
+            data.navbar4;
 
-          await setDoc(doc(db, "SelectedNavbar", "current"), { navbar: componentHTML });
+          await setDoc(doc(db, "SelectedNavbar", "current"), {
+            navbar: componentHTML,
+          });
 
           setComponentCode(componentHTML);
         } else {
@@ -34,8 +37,7 @@ const Rendering = () => {
     };
 
     if (selectedNavbar) fetchComponent();
-  }, [selectedNavbar])
-  ;
+  }, [selectedNavbar]);
 
   return (
     <div>
