@@ -1,29 +1,117 @@
 import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./assets/firebase/firebase";
 
 const Sample = () => {
-  const [componentCode] = useState("");
+  const [NavbarCode, setNavbarCode] = useState("");
+  const [SectionCode, setSectionCode] = useState("");
+  const [CardsCode, setCardsCode] = useState("");
+  const [FooterCode, setFooterCode] = useState("");
 
-  useEffect (() =>  {
-    
 
-  })
+
+
+  const Navbar = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "Navbar"));
+      let activeNavbar = "";
+      
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.active) {
+          activeNavbar = data.htmlData || "";
+          console.log("Fetched successfully");
+        }
+      });
+
+      setNavbarCode(activeNavbar);
+    } catch (error) {
+      console.error("Error fetching navbar:", error);
+    }
+  };
+
+
+  const Footer = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "Footer"));
+      let activeFooter = "";
+      
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.active) {
+          activeFooter = data.htmlData || "";
+          console.log("Fetched successfully");
+        }
+      });
+
+      setFooterCode(activeFooter);
+    } catch (error) {
+      console.error("Error fetching navbar:", error);
+    }
+  };
+
+  
+  const Cards = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "Cards"));
+      let activeCards = "";
+      
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.active) {
+          activeCards = data.htmlData || "";
+          console.log("Fetched successfully");
+        }
+      });
+
+      setCardsCode(activeCards);
+    } catch (error) {
+      console.error("Error fetching navbar:", error);
+    }
+  };
+
+
+  
+  const Section = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "Section"));
+      let activeSection = "";
+      
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.active) {
+          activeSection = data.htmlData || "";
+          console.log("Fetched successfully");
+        }
+      });
+
+      setSectionCode(activeSection);
+    } catch (error) {
+      console.error("Error fetching navbar:", error);
+    }
+  };
+
+
+  useEffect(() => {
+    Navbar();
+    Section();
+    Cards();
+    Footer();
+
+
+  }, []);
 
   return (
     <div>
-        <div>
-      <select 
-      className="p-2 border rounded"
-      >
-        <option value="Navbar1">Navbar 1</option>
-        <option value="Navbar2">Navbar 2</option>
-        <option value="Navbar3">Navbar 3</option>
-        <option value="Navbar4">Navbar 4</option>
-      </select>
-    </div>
-    <h2>Rendered Navbar</h2>
-      <div dangerouslySetInnerHTML={{ __html: componentCode }} />
-    </div>
-  )
-}
+      <div dangerouslySetInnerHTML={{ __html: NavbarCode }} />
+      <div dangerouslySetInnerHTML={{ __html: SectionCode }} />
+      {/* <div dangerouslySetInnerHTML={{ __html: CardsCode }} />
+      <div dangerouslySetInnerHTML={{ __html: FooterCode }} /> */}
 
-export default Sample
+
+      
+    </div>
+  );
+};
+
+export default Sample;

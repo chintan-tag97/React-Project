@@ -1,41 +1,44 @@
 import "./App.css";
+import Button1 from "./Components/buttons/Button1";
+import Button2 from "./Components/buttons/Button2";
+import Button3 from "./Components/buttons/Button3";
+import Button4 from "./Components/buttons/Button4";
 
-// import Button from "./Components/buttons/Button";
-// import FetchButton from "./Components/buttons/FetchButton";
-// import FetchNavbar from "./Components/navbars/FetchNavbar";
 
-// import Navbar from "./Components/navbars/Navbar";
-// import Navbar2 from "./Components/navbars/Navbar2";
-// import FetchNavabr2 from "./Components/navbars/FetchNavabr2";
-// import Navbar3 from "./Components/navbars/Navbar3";
-// import FetchNavbar3 from "./Components/navbars/FetchNavbar3";
-// import Navbar4 from "./Components/navbars/Navbar4";
-// import FetchNavbar4 from "./Components/navbars/FetchNavbar4";
+
+import Navbar from "./Components/navbars/Navbar";
+import Navbar2 from "./Components/navbars/Navbar2";
+import Navbar3 from "./Components/navbars/Navbar3";
+import Navbar4 from "./Components/navbars/Navbar4";
+import Section1 from "./Components/section/Section1";
 import Rendering from "./main/Rendering";
 import Website from "./main/Website";
 import Sample from "./Sample";
+import Start from "./Start";
 
 function App() {
-
   return (
     <>
-      {/* <Navbar /> */}
-      {/* <FetchNavbar /> */}
+      {/* <Navbar />
+      <Navbar2 />
+      <Navbar3 />
+      <Navbar4 />
 
-      {/* <Navbar2 /> */}
-      {/* <FetchNavabr2 /> */}
-      {/* <Navbar3 /> */}
-      {/* <FetchNavbar3 /> */}
-      {/* <Navbar4 /> */}
-      {/* <FetchNavbar4 /> */}
+      <Button1 />
+      <Button2 />
+      <Button3 />
+      <Button4 />
 
-      <Rendering />
-      <Website/>
+      <Section1/> 
 
-      {/* <Button />
-      <FetchButton /> */}
+
+     <Rendering />
+      <Website /> */}
 
       <Sample/>
+      {/* <Start/> */}
+
+    
     </>
   );
 }
